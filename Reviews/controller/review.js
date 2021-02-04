@@ -1,6 +1,6 @@
-const Review = require('../models/Review');
-const Bootcamp = require('../models/Bootcamps');
-const ErrorResponse = require('../utils/errorResponse');
+const Review = require('../model/Review');
+const Bootcamp = require('../../Bootcamps/model/Bootcamps');
+const ErrorResponse = require('../../Errors/util/errorResponse');
 
 // @desc    Get all Reviews
 // @route   GET /api/v1/reviews

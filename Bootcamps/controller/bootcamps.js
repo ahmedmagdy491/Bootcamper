@@ -1,7 +1,8 @@
 const path = require('path');
-const Bootcamp = require('../models/Bootcamps');
-const geocoder = require('../utils/geocoder');
-const ErrorResponse = require('../utils/errorResponse');
+const Bootcamp = require('../model/Bootcamps');
+const geocoder = require('../../utils/geocoder');
+const ErrorResponse = require('../../Errors/util/errorResponse');
+
 // @desc    Get all bootcamps
 // @route   Get /api/v1/bootcamps
 // @access  Public

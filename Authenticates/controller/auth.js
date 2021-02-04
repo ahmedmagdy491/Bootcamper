@@ -1,7 +1,7 @@
 const crypto = require('crypto');
-const User = require('../models/User');
+const User = require('../../Users/model/User');
 const sendEmai = require('../utils/sendEmail');
-const ErrorResponse = require('../utils/errorResponse');
+const ErrorResponse = require('../../Errors/util/errorResponse');
 
 // @desc    register user
 // @route   POST /api/v1/auth/register

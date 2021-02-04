@@ -6,20 +6,20 @@ const {
 	deleteBootcamp,
 	getBootcampsInRadius,
 	bootcampPhotoUpload
-} = require('../controllers/bootcamps');
+} = require('../controller/bootcamps');
 // Include other resource router
-const courseRouter = require('./courses')
-const reviewRouter = require('./review')
-const errorHandler = require('../middleware/error')
-const Bootcamp = require('../models/Bootcamps')
+const courseRouter = require('../../Courses/routes/courses')
+const reviewRouter = require('../../Reviews/routes/review')
+const errorHandler = require('../../Errors/middleware/error')
+const Bootcamp = require('../../Bootcamps/model/Bootcamps')
 
 
 const router = require('express').Router();
 
 
 
-const advancedResults = require('../middleware/advancedResults');
-const {protect, authorize} = require('../middleware/auth')
+const advancedResults = require('../../middleware/advancedResults');
+const {protect, authorize} = require('../../Authenticates/middlewares/auth')
 
 // Re-route into other resource route
 router.use('/:bootcampId/courses', courseRouter)

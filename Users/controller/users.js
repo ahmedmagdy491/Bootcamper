@@ -1,5 +1,4 @@
-const User = require('../models/User');
-const ErrorResponse = require('../utils/errorResponse');
+const User = require('../model/User');
 
 // @desc    Get all users
 // @route   GET /api/v1/auth/users

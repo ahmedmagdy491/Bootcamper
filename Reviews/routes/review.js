@@ -5,13 +5,13 @@ const {
     addReview,
 	updateReview,
 	deleteReview
-} = require('../controllers/review');
-const Review = require('../models/Review');
+} = require('../controller/review');
+const Review = require('../model/Review');
 
 const router = express.Router({ mergeParams: true });
 
-const advamcedResults = require('../middleware/advancedResults');
-const { protect, authorize } = require('../middleware/auth');
+const advamcedResults = require('../../middleware/advancedResults');
+const { protect, authorize } = require('../../Authenticates/middlewares/auth');
 
 router
 	.route('/')

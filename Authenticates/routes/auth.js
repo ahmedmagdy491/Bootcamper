@@ -8,9 +8,9 @@ const {
     updateDetails,
     updatePassword,
     logout
-} = require('../controllers/auth');
+} = require('../controller/auth');
 
-const {protect} = require('../middleware/auth');
+const {protect} = require('../middlewares/auth');
 const router = require('express').Router();
 
 router

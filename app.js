@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express');
 const dotenv = require('dotenv')
-const connectDB = require('./config/db')
 const colors = require('colors')
 const fileupload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
@@ -11,22 +10,32 @@ const xss = require('xss-clean')
 const rateLimit = require('express-rate-limit')
 const hpp = require('hpp')
 const cors = require('cors')
-const errorHandler = require('./middleware/error')
+const errorHandler = require('./Errors/middleware/error')
 // Middlewares
 const logger = require('./middleware/logger')
 // Load env vars
-
 dotenv.config({path: './config/config.env'})
 
 // Connect To DB
-connectDB();
+mongoose.connect('mongodb+srv:Ahmed:ahmed123@cluster0.jqlsh.mongodb.net/devcamper?retryWrites=true&w=majority', 
+        {
+            useNewUrlParser: true,
+            useCreateIndex:true,
+            useUnifiedTopology:true,
+            useFindAndModify:false
+        },
+        ()=>{
+            return console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold);
+         }
+    ).catch(err => `DATABASE ERROR: ${err}`)
+
 
 //Routes
-const bootcampsRoutes = require('./routes/bootcamps')
-const coursesRoutes = require('./routes/courses')
-const authRoutes = require('./routes/auth')
-const usersRoutes = require('./routes/users')
-const reviewsRoutes = require('./routes/review')
+const bootcampsRoutes = require('./Bootcamps/routes/bootcamps')
+const coursesRoutes = require('./Courses/routes/courses')
+const authRoutes = require('./Authenticates/routes/auth')
+const usersRoutes = require('./Users/routes/users')
+const reviewsRoutes = require('./Reviews/routes/review')
 
 
 const app = express();
@@ -69,11 +78,12 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Mount Routers
-app.use('/api/v1/bootcamps', bootcampsRoutes);
-app.use('/api/v1/courses',coursesRoutes);
-app.use('/api/v1/auth',authRoutes);
-app.use('/api/v1/auth/users',usersRoutes);
-app.use('/api/v1/reviews',reviewsRoutes);
+const route = '/api/v1'
+app.use(route,'bootcamps', bootcampsRoutes);
+app.use(route,'/courses',coursesRoutes);
+app.use(route,'/auth',authRoutes);
+app.use(route,'/auth/users',usersRoutes);
+app.use(route,'/reviews',reviewsRoutes);
 app.use(errorHandler);
 
 //listen

@@ -1,6 +1,6 @@
-const Course = require('../models/Course');
-const Bootcamp = require('../models/Bootcamps');
-const ErrorResponse = require('../utils/errorResponse');
+const Course = require('../model/Course');
+const Bootcamp = require('../../Bootcamps/model/Bootcamps');
+const ErrorResponse = require('../../Errors/util/errorResponse');
 
 
 // @desc    Get all Courses

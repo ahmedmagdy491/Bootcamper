@@ -1,9 +1,9 @@
-const { getUser, createUser, getUsers, updateUser, deleteUser } = require('../controllers/users')
-const User = require('../models/User');
+const { getUser, createUser, getUsers, updateUser, deleteUser } = require('../controller/users')
+const User = require('../model/User');
 const router = require("express").Router()
 
-const advancedResults = require('../middleware/advancedResults');
-const {protect, authorize}= require('../middleware/auth')
+const advancedResults = require('../../middleware/advancedResults');
+const {protect, authorize}= require('../../Authenticates/middlewares/auth')
 
 router.use(protect);
 router.use(authorize('admin'));

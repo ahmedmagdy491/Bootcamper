@@ -5,7 +5,7 @@ const colors = require('colors')
 
 dotenv.config({path: './config/config.env'})
 // Coonect To DB
-mongoose.connect(process.env.DB_CONNECTION_URI, 
+mongoose.connect('mongodb+srv:Ahmed:ahmed123@cluster0.jqlsh.mongodb.net/devcamper?retryWrites=true&w=majority', 
     {
         useNewUrlParser: true,
         useCreateIndex:true,
@@ -15,27 +15,27 @@ mongoose.connect(process.env.DB_CONNECTION_URI,
 ).catch(err=> console.log(err));
 
 // Load Bootcamps
-const Bootcamps = require('./models/Bootcamps')
+const Bootcamps = require('./Bootcamps/model/Bootcamps')
 // Load Courses
-const Course = require('./models/Course')
+const Course = require('./Courses/model/Course')
 // Load Users
-const User = require('./models/User')
+const User = require('./Users/model/User')
 // Load Reviews
-const Review = require('./models/Review')
+const Review = require('./Reviews/model/Review')
 
 
 // Read JSON files
 const bootcamps = JSON.parse(
-    fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8')
+    fs.readFileSync(`${__dirname}/Bootcamps/data/bootcamps.json`, 'utf-8')
 )
 const courses = JSON.parse(
-    fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8')
+    fs.readFileSync(`${__dirname}Courses/data/courses.json`, 'utf-8')
 )
 const users = JSON.parse(
-    fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8')
+    fs.readFileSync(`${__dirname}Users/data/users.json`, 'utf-8')
 )
 const reviews = JSON.parse(
-    fs.readFileSync(`${__dirname}/_data/reviews.json`, 'utf-8')
+    fs.readFileSync(`${__dirname}Reviews/data/reviews.json`, 'utf-8')
 )
 
 // Import into DB
